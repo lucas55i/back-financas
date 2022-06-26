@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Financas } from '../models/financas';
+import { Financas } from '../dataBase/models/financas';
 import { FinancaService } from '../services/financas.service';
-import { EnumApiTags } from 'src/financas/enums/api-tags';
 import { ApiTags } from '@nestjs/swagger';
+import { EnumApiTags } from 'src/enums/api-tags';
 
 @ApiTags(EnumApiTags.FINANCAS)
 @Controller('financas')

@@ -1,11 +1,18 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { FinacasModule } from './financas/finacas.module';
+import { ConfigModule } from '@nestjs/config';
+// import { MongooseModule } from '@nestjs/mongoose';
+import { getEnvironmentFile } from 'config/configuration';
+import { FinancasController } from './controllers/financas.controller';
+import { FinancaService } from './services/financas.service';
+
+const env = getEnvironmentFile();
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/'),
-    FinacasModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: [env],
+    }),
   ],
 
   controllers: [],
